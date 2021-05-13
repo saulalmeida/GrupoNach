@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">grupoNach</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_movie">Peliculas</string>
+    <string name="title_upload">Subida de Archivos</string>
+    <string name="title_maps">Ubicación</string>
+    <string name="no_internet">No hay conexión a Internet</string>
 </resources>
