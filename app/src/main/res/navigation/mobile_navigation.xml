@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_maps"
-        android:name="com.example.gruponach.ui.Upload.UploadFragment"
+        android:name="com.example.gruponach.ui.Maps.MapFragment"
         android:label="@string/title_maps"
-        tools:layout="@layout/fragment_maps" />
+        tools:layout="@layout/fragment_map" />
 </navigation>

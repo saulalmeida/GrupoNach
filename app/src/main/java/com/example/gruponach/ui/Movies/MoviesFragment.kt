@@ -37,40 +37,12 @@ class MoviesFragment : Fragment() {
         val manager = GridLayoutManager(context,2)
         recycler.layoutManager = manager
 
-        val isOnline = context?.let { Utils.CheckInternetAcces(it) };
-
-        if (isOnline!!){
-            movieViewModel.GetMoviesOnline().observe(viewLifecycleOwner, Observer<List<Movie>>
-            { movies ->
-                if (movies != null) {
-                    val adapter = MovieAdapter()
-                    adapter.setData(movies)
-                    recycler.adapter = adapter
-                    movieViewModel.cleanData()
-                    movieViewModel.saveMoviesTemporary(movies)
-                }
-            })
-
-        }else{
-            textErrorOffline.text = getString(R.string.no_internet)
-            textErrorOffline.visibility = View.VISIBLE
-            movieViewModel.GetMoviesOffline().observe(viewLifecycleOwner, Observer<List<Movie>>
-            {moviesOffline ->
-                val adapter = MovieAdapter()
-                adapter.setData(moviesOffline)
-                recycler.adapter = adapter
-
-            })
-        }
-
-
+        ConnectionStatus()
 
         return root
     }
 
-
-    override fun onResume() {
-        super.onResume()
+    fun ConnectionStatus(){
         val isOnline = context?.let { Utils.CheckInternetAcces(it) };
 
         if (isOnline!!){
@@ -97,6 +69,14 @@ class MoviesFragment : Fragment() {
 
             })
         }
+
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        ConnectionStatus()
+
 
     }
 }
